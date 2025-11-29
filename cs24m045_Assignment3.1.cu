@@ -70,7 +70,6 @@ __global__ void boruvka_kernel(
 
     while (true) {
         for (int i = tid; i < V; i += nT) cheapest[i] = 0xFFFFFFFFFFFFFFFFull;
-        grid.sync();
 
         if (tid == 0) *changed = 0;
         grid.sync();
