@@ -153,7 +153,7 @@ int main() {
         return 1;
     }
 
-    int numBlocks = 1000;
+    int numBlocks = 32;
 
     void* args[] = {
         &V, &E,
