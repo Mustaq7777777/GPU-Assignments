@@ -114,8 +114,6 @@ static int pick_num_blocks(void* kernel, int blockSize) {
 }
 
 int main() {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr);
 
     int V, E;
     if (!(std::cin >> V >> E)) return 0;
