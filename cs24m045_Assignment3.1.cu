@@ -102,15 +102,6 @@ __global__ void boruvka_kernel(
     }
 }
 
-static int pick_num_blocks(void* kernel, int blockSize) {
-    int perSM = 0, smCount = 0;
-    cudaDeviceProp prop{};
-    cudaGetDeviceProperties(&prop, 0);
-    smCount = prop.multiProcessorCount;
-    cudaOccupancyMaxActiveBlocksPerMultiprocessor(&perSM, kernel, blockSize, 0);
-    if (perSM < 1) perSM = 1;
-    return perSM * smCount;
-}
 
 int main() {
 
@@ -162,7 +153,7 @@ int main() {
         return 1;
     }
 
-    int numBlocks = pick_num_blocks((void*)boruvka_kernel, BLOCK_SIZE);
+    int numBlocks = 1000;
 
     void* args[] = {
         &V, &E,
