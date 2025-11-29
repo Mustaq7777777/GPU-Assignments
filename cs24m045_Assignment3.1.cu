@@ -32,7 +32,7 @@ __device__ int unite_by_rank(int* parent, int* rank, int a, int b) {
         int rra = rank[ra], rrb = rank[rb];
         if (rra < rrb) { root = rb; child = ra; }
         else if (rra > rrb) { root = ra; child = rb; }
-        else { eq = true; if (ra > rb) { root = rb; child = ra; } }
+        else { eq = true; root = rb; child = ra;  }
 
         int prev = atomicCAS(&parent[child], child, root);
         if (prev == child) {
